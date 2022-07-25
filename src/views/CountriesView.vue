@@ -19,7 +19,6 @@
 import { onMounted, reactive } from 'vue';
 
 export default {
-  name: 'CountryGroupsView',
   setup() {
     const state = reactive({
       countries: [],

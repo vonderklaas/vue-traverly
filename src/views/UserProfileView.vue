@@ -1,10 +1,10 @@
 <template>
   <div class="about">
     <h1>User</h1>
-    <p>{{ fullName }}</p>
-    <p>From {{ state.user.origin }}</p>
     <p>@{{ state.user.username }}</p>
     <p>Email: {{ state.user.email }}</p>
+    <p>Bio: {{ state.user.biography }}</p>
+    <p>From: {{ state.user.origin }}</p>
     <div>
       <h3>Follows</h3>
       <p :key="follower" v-for="follower in state.user.follows">
@@ -23,24 +23,23 @@
         >
       </p>
     </div>
-
     <ul>
-      <h2>Visited</h2>
+      <h3>Visited</h3>
       <li :key="country" v-for="country in state.user.countriesVisited">
-        <router-link :to="{ name: 'Country', params: { name: country.name } }">
-          {{ country.name }}
+        <router-link :to="{ name: 'Country', params: { name: country } }">
+          {{ country }}
         </router-link>
       </li>
     </ul>
     <ul>
-      <h2>Want to visit</h2>
-      <li :key="country.abbr" v-for="country in state.user.wantToVisit">
-        <router-link :to="{ name: 'Country', params: { name: country.name } }">
-          {{ country.name }}
+      <h3>Want to visit</h3>
+      <li :key="country" v-for="country in state.user.countriesWishes">
+        <router-link :to="{ name: 'Country', params: { name: country } }">
+          {{ country }}
         </router-link>
       </li>
     </ul>
-    <h2 class="posts">Posts</h2>
+    <h3 class="posts">Posts</h3>
     <div class="post" :key="post.id" v-for="post in state.user.posts">
       <h3>{{ post.title }}</h3>
       <p>{{ post.content }}</p>
@@ -51,7 +50,6 @@
 </template>
 
 <script>
-import { users } from '@/assets/users';
 import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -59,34 +57,27 @@ export default {
   name: 'UserProfileView',
   setup() {
     const route = useRoute();
-
     const state = reactive({
       user: {},
     });
-    const paramsUsername = computed(() => route.params.username);
-    const fullName = computed(
-      () => `${state.user.firstName} ${state.user.lastName}`
-    );
+    const paramsId = computed(() => route.params.id);
 
-    function getUser() {
-      return users.filter((user) => {
-        if (user.username === paramsUsername.value) {
-          state.user = user;
-        }
-      });
-    }
+    onMounted(async () => {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${paramsId.value}`
+      );
+      const user = await response.json();
+      console.log(user);
+      state.user = user;
+    });
 
     function likePost(id) {
       const selectedPost = state.user.posts.filter((post) => post.id === id);
       selectedPost[0].likes++;
     }
-    onMounted(() => {
-      getUser();
-    });
 
     return {
       state,
-      fullName,
       likePost,
     };
   },

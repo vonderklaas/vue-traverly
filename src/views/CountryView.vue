@@ -10,8 +10,6 @@ import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
-  name: 'CountryView',
-
   setup() {
     const route = useRoute();
     const state = reactive({
