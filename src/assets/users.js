@@ -6,6 +6,8 @@ export const users = [
     lastName: 'Garbalau',
     origin: 'Moldova',
     email: 'nick.garbalau@gmail.com',
+    follows: [],
+    followers: ['anastasiamartiniuc'],
     countriesVisited: [
       {
         name: 'Netherlands',
@@ -40,6 +42,8 @@ export const users = [
     lastName: 'Martiniuc',
     origin: 'Moldova',
     email: 'a.mart@gmail.com',
+    follows: ['nickgarbalau'],
+    followers: [],
     countriesVisited: [
       {
         name: 'Poland',

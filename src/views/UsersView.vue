@@ -2,9 +2,10 @@
   <div class="about">
     <h1>Users</h1>
     <div :key="user.id" v-for="user in users">
-      <router-link :to="{ name: 'User Profile', params: { id: user.id } }">{{
-        user.username
-      }}</router-link>
+      <router-link
+        :to="{ name: 'User Profile', params: { username: user.username } }"
+        >{{ user.username }}</router-link
+      >
     </div>
   </div>
 </template>

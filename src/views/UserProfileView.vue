@@ -5,16 +5,39 @@
     <p>From {{ state.user.origin }}</p>
     <p>@{{ state.user.username }}</p>
     <p>Email: {{ state.user.email }}</p>
+    <div>
+      <h3>Follows</h3>
+      <p :key="follower" v-for="follower in state.user.follows">
+        <router-link
+          :to="{ name: 'User Profile', params: { username: follower } }"
+          >@{{ follower }}</router-link
+        >
+      </p>
+    </div>
+    <div>
+      <h3>Followers</h3>
+      <p :key="follower" v-for="follower in state.user.followers">
+        <router-link
+          :to="{ name: 'User Profile', params: { username: follower } }"
+          >@{{ follower }}</router-link
+        >
+      </p>
+    </div>
+
     <ul>
       <h2>Visited</h2>
       <li :key="country" v-for="country in state.user.countriesVisited">
-        {{ country.name }}
+        <router-link :to="{ name: 'Country', params: { name: country.name } }">
+          {{ country.name }}
+        </router-link>
       </li>
     </ul>
     <ul>
       <h2>Want to visit</h2>
       <li :key="country.abbr" v-for="country in state.user.wantToVisit">
-        {{ country.name }}
+        <router-link :to="{ name: 'Country', params: { name: country.name } }">
+          {{ country.name }}
+        </router-link>
       </li>
     </ul>
     <h2 class="posts">Posts</h2>
@@ -40,25 +63,23 @@ export default {
     const state = reactive({
       user: {},
     });
-    const userId = computed(() => route.params.id);
+    const paramsUsername = computed(() => route.params.username);
     const fullName = computed(
       () => `${state.user.firstName} ${state.user.lastName}`
     );
 
     function getUser() {
       return users.filter((user) => {
-        if (user.id === parseInt(userId.value)) {
+        if (user.username === paramsUsername.value) {
           state.user = user;
         }
       });
     }
 
     function likePost(id) {
-      console.log('Post id', id);
       const selectedPost = state.user.posts.filter((post) => post.id === id);
       selectedPost[0].likes++;
     }
-
     onMounted(() => {
       getUser();
     });
@@ -66,7 +87,6 @@ export default {
     return {
       state,
       fullName,
-      userId,
       likePost,
     };
   },
