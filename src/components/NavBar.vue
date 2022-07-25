@@ -3,7 +3,9 @@
     <router-link to="/">Traverly</router-link> |
     <router-link to="/users">Users</router-link> |
     <router-link to="/countries">Country Groups</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/register">Register</router-link> |
+    <router-link to="/login">Login</router-link>
   </nav>
 </template>
 
