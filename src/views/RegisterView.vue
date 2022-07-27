@@ -1,6 +1,6 @@
 <template>
   <h1>Register</h1>
-  <form @submit.prevent="handleRegisterSubmit">
+  <form @submit.prevent="handleRegister">
     <div>
       <label>
         Username
@@ -25,7 +25,6 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 import { reactive } from 'vue';
 
 export default {
@@ -36,31 +35,20 @@ export default {
       username: '',
       email: '',
       password: '',
-      user: {},
     });
 
-    function handleRegisterSubmit() {
-      axios
-        .post('http://localhost:5000/api/auth/register', {
-          username: state.username,
-          email: state.email,
-          password: state.password,
-        })
-        .then((response) => {
-          console.log(response.data);
-          state.user = response.data;
-          console.log(state.user);
-        })
-        .catch((error) => {
-          console.log('error: ' + error);
-        });
-
-      router.push('/login');
+    function handleRegister() {
+      console.log(`Username: ${state.username}`);
+      console.log(`Email: ${state.email}`);
+      console.log(`Password: ${state.password}`);
+      setTimeout(() => {
+        router.push('/login');
+      }, 1000);
     }
 
     return {
       state,
-      handleRegisterSubmit,
+      handleRegister,
     };
   },
 };

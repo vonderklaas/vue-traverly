@@ -18,7 +18,7 @@ export default {
 
     onMounted(async () => {
       const response = await fetch(
-        `http://localhost:5000/api/users/${paramsId.value}`
+        `http://localhost:3000/users/${paramsId.value}`
       );
       const user = await response.json();
       console.log(user);

@@ -2,7 +2,7 @@
   <div class="about">
     <h1>Users</h1>
     <div :key="user.id" v-for="user in state.users">
-      <router-link :to="{ name: 'User Profile', params: { id: user._id } }">{{
+      <router-link :to="{ name: 'User Profile', params: { id: user.id } }">{{
         user.username
       }}</router-link>
     </div>
@@ -18,9 +18,10 @@ export default {
       users: [],
     });
     onMounted(async () => {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch('http://localhost:3000/users');
       const users = await response.json();
       state.users = users;
+      console.log(users);
     });
 
     return {
