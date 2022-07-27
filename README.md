@@ -1,24 +1,25 @@
 # traverly
 
 ## Project setup
+
 ```
-yarn install
+npm i
 ```
 
-### Compiles and hot-reloads for development
+### UI
+
 ```
-yarn serve
+npm run serve
 ```
 
-### Compiles and minifies for production
+### Install json-server globally
+
 ```
-yarn build
+npm i -g json-server
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+### json-server
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+json-server --watch db.json
+```
