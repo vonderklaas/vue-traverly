@@ -1,19 +1,53 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "posts": [
+    {
+      "authorId": 1,
+      "title": "Why I liked Afganistan and disliked everything else",
+      "author": "dicky"
+    },
+    {
+      "authorId": 2,
+      "title": "Where to find good stakes in London?",
+      "author": "faguras33"
+    }
+  ],
   "users": [
     {
       "id": 1,
-      "username": "nicky",
-      "email": "nicky@gmail.com",
+      "username": "dicky",
+      "email": "dicky@gmail.com",
       "password": "s1hish127sh21s12s1h2",
       "profilePicture": "https://randomuser.me/api/portraits/men/1.jpg",
-      "biography": "Software Developer",
-      "origin": "Moldova",
-      "follows": [],
-      "followers": [],
-      "countriesVisited": [],
-      "countriesWishes": []
+      "biography": "Italian Writer",
+      "origin": "Italy",
+      "following": [
+        {
+          "id": 2,
+          "username": "faguras33"
+        },
+        {
+          "id": 3,
+          "username": "maaartiniuc"
+        }
+      ],
+      "followers": [
+        {
+          "id": 3,
+          "username": "maaartiniuc"
+        }
+      ],
+      "visited": [
+        {
+          "name": "Netherlands",
+          "abbr": "NL"
+        }
+      ],
+      "wishes": [
+        {
+          "name": "United Kingdom",
+          "abbr": "UK"
+        }
+      ]
     },
     {
       "id": 2,
@@ -23,10 +57,29 @@
       "profilePicture": "https://randomuser.me/api/portraits/men/2.jpg",
       "biography": "Librarian",
       "origin": "Lithuania",
-      "follows": [],
-      "followers": [],
-      "countriesVisited": [],
-      "countriesWishes": []
+      "following": [],
+      "followers": [
+        {
+          "id": 1,
+          "username": "nicky"
+        }
+      ],
+      "visited": [
+        {
+          "name": "Lithuania",
+          "abbr": "LH"
+        },
+        {
+          "name": "Moldova",
+          "abbr": "MD"
+        }
+      ],
+      "wishes": [
+        {
+          "name": "United States of America",
+          "abbr": "USA"
+        }
+      ]
     },
     {
       "id": 3,
@@ -36,10 +89,34 @@
       "profilePicture": "https://randomuser.me/api/portraits/women/1.jpg",
       "biography": "Michelin Chief",
       "origin": "Moldova",
-      "follows": [],
-      "followers": [],
-      "countriesVisited": [],
-      "countriesWishes": []
+      "following": [
+        {
+          "id": 1,
+          "username": "dicky"
+        }
+      ],
+      "followers": [
+        {
+          "id": 1,
+          "username": "dicky"
+        }
+      ],
+      "visited": [
+        {
+          "name": "Netherlands",
+          "abbr": "NL"
+        },
+        {
+          "name": "Moldova",
+          "abbr": "MD"
+        }
+      ],
+      "wishes": [
+        {
+          "name": "Singapore",
+          "abbr": "SG"
+        }
+      ]
     }
   ]
 }

@@ -31,7 +31,6 @@ export default {
       );
       const countries = await response.json();
       state.countries = countries;
-      console.log(countries);
     });
 
     return {

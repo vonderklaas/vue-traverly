@@ -1,6 +1,8 @@
 <template>
   <Navbar />
-  <router-view :key="$route.fullPath" />
+  <div class="container">
+    <router-view :key="$route.fullPath" />
+  </div>
 </template>
 
 <script>
@@ -15,11 +17,17 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: #f7f8f9;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <h1>Login</h1>
-  <form @submit.prevent="handleLoginSubmit">
+  <form @submit.prevent="handleLogin">
     <div>
       <label>
         Email
@@ -19,7 +19,6 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import axios from 'axios';
 import { reactive } from 'vue';
 
 export default {
@@ -32,27 +31,18 @@ export default {
       user: {},
     });
 
-    function handleLoginSubmit() {
-      axios
-        .post('http://localhost:5000/api/auth/login', {
-          email: state.email,
-          password: state.password,
-        })
-        .then((response) => {
-          console.log(response.data);
-          state.user = response.data;
-          console.log(state.user);
-        })
-        .catch((error) => {
-          console.log('error: ' + error);
-        });
-
-      router.push('/');
+    function handleLogin() {
+      console.log(`Username: ${state.username}`);
+      console.log(`Email: ${state.email}`);
+      console.log(`Password: ${state.password}`);
+      setTimeout(() => {
+        router.push('/login');
+      }, 1000);
     }
 
     return {
       state,
-      handleLoginSubmit,
+      handleLogin,
     };
   },
 };
