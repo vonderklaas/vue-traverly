@@ -23,7 +23,7 @@ import axios from 'axios';
 import { reactive } from 'vue';
 
 export default {
-  name: 'LoginView',
+  name: 'Login',
   setup() {
     const router = useRouter();
     const state = reactive({

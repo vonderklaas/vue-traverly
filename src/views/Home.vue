@@ -1,9 +1,11 @@
 <template>
-  <div class="home">
+  <div>
     <h1>Traverly</h1>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'Home',
+};
 </script>

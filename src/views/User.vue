@@ -12,8 +12,7 @@
     <div>
       <h3>Follows</h3>
       <span :key="follower" v-for="follower in state.user.follows">
-        <router-link
-          :to="{ name: 'User Profile', params: { username: follower } }"
+        <router-link :to="{ name: 'User', params: { username: follower } }"
           >@{{ follower }}</router-link
         >
       </span>
@@ -21,8 +20,7 @@
     <div>
       <h3>Followers</h3>
       <span :key="follower" v-for="follower in state.user.followers">
-        <router-link
-          :to="{ name: 'User Profile', params: { username: follower } }"
+        <router-link :to="{ name: 'User', params: { username: follower } }"
           >@{{ follower }}</router-link
         >
       </span>
@@ -47,9 +45,31 @@
 </template>
 
 <script>
+import { reactive, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
 export default {
-  name: 'UserCard',
-  props: ['state'],
+  name: 'User',
+  setup() {
+    const route = useRoute();
+    const state = reactive({
+      user: {},
+    });
+    const paramsId = computed(() => route.params.id);
+
+    onMounted(async () => {
+      // Fetch one user
+      const response = await fetch(
+        `http://localhost:3000/users/${paramsId.value}`
+      );
+      const user = await response.json();
+      state.user = user;
+    });
+
+    return {
+      state,
+    };
+  },
 };
 </script>
 

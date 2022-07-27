@@ -1,53 +1,55 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import UsersView from '../views/UsersView.vue';
-import UserProfileView from '../views/UserProfileView.vue';
-import AboutView from '../views/AboutView.vue';
-import CountriesView from '../views/CountriesView.vue';
-import CountryView from '../views/CountryView.vue';
-import RegisterView from '../views/RegisterView.vue';
-import LoginView from '../views/LoginView.vue';
+
+// Views
+import About from '../views/About.vue';
+import Countries from '../views/Countries.vue';
+import Country from '../views/Country.vue';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import Register from '../views/Register.vue';
+import User from '../views/User.vue';
+import Users from '../views/Users.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView,
+    component: Home,
   },
   {
     path: '/users',
-    name: 'All Users',
-    component: UsersView,
+    name: 'Users',
+    component: Users,
   },
   {
     path: '/users/:id',
-    name: 'User Profile',
-    component: UserProfileView,
+    name: 'User',
+    component: User,
   },
   {
     path: '/countries',
     name: 'Countries',
-    component: CountriesView,
+    component: Countries,
   },
   {
     path: '/countries/:name',
     name: 'Country',
-    component: CountryView,
+    component: Country,
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutView,
+    component: About,
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterView,
+    component: Register,
   },
   {
     path: '/login',
     name: 'Login',
-    component: LoginView,
+    component: Login,
   },
 ];
 

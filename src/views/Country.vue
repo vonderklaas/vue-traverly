@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <h1>{{ state.country.name }}</h1>
     <p>Bla bla bla</p>
   </div>
@@ -10,6 +10,7 @@ import { reactive, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
+  name: 'Country',
   setup() {
     const route = useRoute();
     const state = reactive({
@@ -18,6 +19,7 @@ export default {
     const countryUrl = computed(() => route.params.name);
 
     onMounted(async () => {
+      // Fetch one country
       const response = await fetch(
         `https://restcountries.com/v3/name/${countryUrl.value.toLowerCase()}`
       );
