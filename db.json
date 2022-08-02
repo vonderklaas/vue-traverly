@@ -118,5 +118,42 @@
         }
       ]
     }
-  ]
+  ],
+  "profile": {
+    "id": 243,
+    "username": "galileo",
+    "email": "galileio@gmail.com",
+    "password": "asdasdadasdsada",
+    "profilePicture": "https://randomuser.me/api/portraits/men/20.jpg",
+    "biography": "Traveler",
+    "origin": "Moldova",
+    "following": [
+      {
+        "id": 1,
+        "username": "dicky"
+      }
+    ],
+    "followers": [
+      {
+        "id": 1,
+        "username": "dicky"
+      }
+    ],
+    "visited": [
+      {
+        "name": "Netherlands",
+        "abbr": "NL"
+      },
+      {
+        "name": "Moldova",
+        "abbr": "MD"
+      }
+    ],
+    "wishes": [
+      {
+        "name": "Singapore",
+        "abbr": "SG"
+      }
+    ]
+  }
 }

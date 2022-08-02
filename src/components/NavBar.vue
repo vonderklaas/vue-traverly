@@ -12,16 +12,16 @@
         <router-link to="/users">Users</router-link>
         <router-link to="/countries">Countries</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/register">Register</router-link>
-        <router-link to="/login">Login</router-link>
       </nav>
-      <div class="navbar__links-profile">
-        <img
-          src="https://randomuser.me/api/portraits/men/20.jpg"
-          alt="Avatar"
-        />
-        <span>Galileo Galilei</span>
-      </div>
+      <router-link to="/profile">
+        <div class="navbar__links-profile">
+          <img
+            src="https://randomuser.me/api/portraits/men/20.jpg"
+            alt="Avatar"
+          />
+          <span>Galileo Galilei</span>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>

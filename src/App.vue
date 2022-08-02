@@ -29,5 +29,11 @@ body {
 .container {
   max-width: 1170px;
   margin: 0 auto;
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+a {
+  text-decoration: none;
+  color: #42b983;
 }
 </style>

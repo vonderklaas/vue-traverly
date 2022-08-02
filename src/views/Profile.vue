@@ -2,19 +2,19 @@
   <div class="user">
     <img
       class="user__image"
-      :src="state.user.profilePicture"
-      :alt="state.user.username"
+      :src="state.profile.profilePicture"
+      :alt="state.profile.username"
     />
-    <h1 class="user__username">@{{ state.user.username }}</h1>
+    <h1 class="user__username">@{{ state.profile.username }}</h1>
     <div class="user__bio">
-      <p>Email: {{ state.user.email }}</p>
-      <p>Bio: {{ state.user.biography }}</p>
-      <p>From: {{ state.user.origin }}</p>
+      <p>Email: {{ state.profile.email }}</p>
+      <p>Bio: {{ state.profile.biography }}</p>
+      <p>From: {{ state.profile.origin }}</p>
     </div>
     <div class="user__following">
       <h4>Following</h4>
       <router-link
-        v-for="user in state.user.following"
+        v-for="user in state.profile.following"
         :key="user.id"
         :to="{ name: 'User', params: { id: user.id } }"
       >
@@ -24,7 +24,7 @@
     <div class="user__followers">
       <h4>Followers</h4>
       <router-link
-        v-for="user in state.user.followers"
+        v-for="user in state.profile.followers"
         :key="user.id"
         :to="{ name: 'User', params: { id: user.id } }"
       >
@@ -34,7 +34,7 @@
     <div class="user__visited">
       <h4>Visited</h4>
       <router-link
-        v-for="country in state.user.visited"
+        v-for="country in state.profile.visited"
         :key="country.abbr"
         :to="{ name: 'Country', params: { name: country.name } }"
       >
@@ -44,7 +44,7 @@
     <div class="user__wishes">
       <h4>Wishes</h4>
       <router-link
-        v-for="country in state.user.wishes"
+        v-for="country in state.profile.wishes"
         :key="country.abbr"
         :to="{ name: 'Country', params: { name: country.name } }"
       >
@@ -55,24 +55,19 @@
 </template>
 
 <script>
-import { reactive, computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { reactive, onMounted } from 'vue';
 
 export default {
-  name: 'User',
+  name: 'Profile',
   setup() {
-    const route = useRoute();
     const state = reactive({
-      user: {},
+      profile: {},
     });
-    const paramsId = computed(() => route.params.id);
 
     onMounted(async () => {
-      const response = await fetch(
-        `http://localhost:3000/users/${paramsId.value}`
-      );
-      const user = await response.json();
-      state.user = user;
+      const response = await fetch(`http://localhost:3000/profile`);
+      const profileUser = await response.json();
+      state.profile = profileUser;
     });
 
     return {
